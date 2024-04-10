@@ -19,7 +19,7 @@ subscribe(APP_READY, () => {
     <AppProvider>
       <Header />
       <ExamplePage />
-      <Footer />
+     
     </AppProvider>,
     document.getElementById('root'),
   );
