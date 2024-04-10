@@ -1,4 +1,4 @@
-import 'core-js/stable';
+{/*import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import {
@@ -32,3 +32,28 @@ subscribe(APP_INIT_ERROR, (error) => {
 initialize({
   messages,
 });
+*/}
+
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
+import {
+  APP_INIT_ERROR, APP_READY, subscribe, initialize,
+} from '@edx/frontend-platform';
+import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
+import ReactDOM from 'react-dom';
+
+import Header from '@edx/frontend-component-header';
+import Footer from '@edx/frontend-component-footer';
+import messages from './i18n';
+import ExamplePage from './example/ExamplePage';
+
+import './index.scss';
+
+ReactDOM.render(
+  <>
+    <ExamplePage />
+  </>,
+  document.getElementById('root'),
+);
+
