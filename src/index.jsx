@@ -16,11 +16,11 @@ import './index.scss';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
-    <AppProvider>
-      <Header />
+    <>
+     
       <ExamplePage />
-      <Footer />
-    </AppProvider>,
+   
+    </>,
     document.getElementById('root'),
   );
 });
