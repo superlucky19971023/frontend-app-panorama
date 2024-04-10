@@ -1,5 +1,5 @@
-import Footer from '../components/Footer/Footer';
 import { Container } from '@openedx/paragon';
+import Footer from '../components/Footer/Footer';
 
 const ExamplePage = () => (
   <main>
