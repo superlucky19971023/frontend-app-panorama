@@ -5,11 +5,11 @@ import './stylesFooter.css';
 const Footer = () => (
   <div className="footer">
     <a href="https://www.aulasneo.com">
-      <img src={logo} alt="Logo" className="logoFooter"></img>
+      <img src={logo} alt="Logo" className="logoFooter" />
     </a>
     <a href="https://aulasneo.com/contact/">Contact</a>
-    <a href="https://aulasneo.com/terms-of-use/"></a>
+    <a href="https://aulasneo.com/terms-of-use/">Terms of Us</a>
   </div>
-)
+);
 
 export default Footer;
