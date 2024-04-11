@@ -1,0 +1,16 @@
+/* HEADER */
+.header {
+  background-color: white;
+  width: 100%;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.logoPanorama {
+  height: 80px;
+  padding: 1rem;
+}
