@@ -1,6 +1,6 @@
 import { Container } from '@openedx/paragon';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 const ExamplePage = () => (
   <main>
