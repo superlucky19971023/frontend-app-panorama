@@ -5,8 +5,6 @@ import ExamplePage from './example/ExamplePage';
 import './index.scss';
 
 ReactDOM.render(
-  
     <ExamplePage />,
-
   document.getElementById('root'),
 );
