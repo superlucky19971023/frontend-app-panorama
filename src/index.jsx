@@ -17,7 +17,7 @@ import './index.scss';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
-    <AppProvider >
+    <AppProvider>
       <Header />
       <AppPanorama />
       <Footer />
