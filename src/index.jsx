@@ -6,16 +6,27 @@ import {
 } from '@edx/frontend-platform';
 import { AppProvider } from '@edx/frontend-platform/react';
 import ReactDOM from 'react-dom';
-import AppPanorama from './AppPanorama';
+
 import Header from '@edx/frontend-component-header';
 import Footer from '@edx/frontend-component-footer';
+import AppPanorama from './AppPanorama';
 import './index.scss';
 
-ReactDOM.render(
-  <AppProvider>
-    <Header />
-    <AppPanorama />
-    <Footer />
-  </AppProvider>,
-  document.getElementById('root'),
-);
+subscribe(APP_READY, () => {
+  ReactDOM.render(
+    <AppProvider>
+      <Header />
+      <AppPanorama />
+      <Footer />
+    </AppProvider>,
+    document.getElementById('root'),
+  );
+});
+
+subscribe(APP_INIT_ERROR, (error) => {
+  ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
+});
+
+initialize({
+  messages,
+});
