@@ -6,7 +6,7 @@ const Header = () => (
   <div className="header">
     <div className="content-header">
       <img src={logoPanorama} alt="Logo" className="logoPanorama" />
-      <a href='"".concat(getConfig().LMS_BASE_URL, "/dashboard")'>Courses</a>
+     
     </div>
   </div>
 );
