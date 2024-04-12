@@ -2,10 +2,9 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import {
   APP_READY, subscribe, initialize,
-  mergeConfig,
 } from '@edx/frontend-platform';
 
-import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
+import { AppProvider } from '@edx/frontend-platform/react';
 import ReactDOM from 'react-dom';
 
 import Header from '@edx/frontend-component-header';
@@ -25,10 +24,6 @@ subscribe(APP_READY, () => {
     document.getElementById('root'),
   );
 });
-
-// subscribe(APP_INIT_ERROR, (error) => {
-//   ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
-// });
 
 initialize({
   messages,
