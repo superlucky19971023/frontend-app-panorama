@@ -4,12 +4,13 @@ import 'regenerator-runtime/runtime';
 import {
   APP_INIT_ERROR, APP_READY, subscribe, initialize,
 } from '@edx/frontend-platform';
-import { AppProvider } from '@edx/frontend-platform/react';
+import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
 import ReactDOM from 'react-dom';
 
 import Header from '@edx/frontend-component-header';
 import Footer from '@edx/frontend-component-footer';
 import AppPanorama from './AppPanorama';
+import messages from './i18n';
 import './index.scss';
 
 subscribe(APP_READY, () => {
