@@ -56,12 +56,13 @@ const messages = {
 };
 
 ReactDOM.render(
+
   <IntlProvider locale="en" messages={messages.en}>
-    <>
+    <AppProvider>
       <Header />
       <AppPanorama />
       <Footer />
-    </>
+    </AppProvider>Holaaa
   </IntlProvider>,
   document.getElementById('root'),
 );
