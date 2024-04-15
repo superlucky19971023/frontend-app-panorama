@@ -11,18 +11,18 @@ import messages from './i18n';
 import AppPanorama from './AppPanorama';
 import './index.scss';
 subscribe(APP_READY, () => {
-
-  console.log("subscribe", APP_INIT_ERROR, APP_READY, subscribe, initialize)
-
   ReactDOM.render(
     <>
       <Header />
       <AppPanorama />
+      <div>HOLAAAAA</div>
       <Footer />
     </>,
     document.getElementById('root'),
+    console.log("subscribe", APP_INIT_ERROR, APP_READY, subscribe, initialize)
   );
 });
+  console.log("subscribe", APP_INIT_ERROR, APP_READY, subscribe, initialize)
   subscribe(APP_INIT_ERROR, (error) => {
     ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
   });
