@@ -1,0 +1,60 @@
+{
+    "header": {
+        "home": "Inicio",
+        "dashboard": "Paneles",
+        "author": "Autor",
+        "signOut": "Cerrar Sesión",
+        "profile": "Perfil"
+    },
+    "welcome": {
+        "titleWelcome": "Bienvenido",
+        "mesageWelcome": "Ingresar al Dashboard para ver los paneles de Quicksight.",
+        "mesageWelcomeDemo2": "Contáctenos para conectar su instancia de Open edX® a PANORAMA® y comenzar a convertir sus datos en conocimientos prácticos y decisiones estratégicas.",
+        "mesageWelcomeDemo1": "Como nuevo usuario, puede experimentar todo el poder de PANORAMA® con un conjunto de datos anónimos, únicamente con fines de prueba.",
+        "contant": "Contactanos",
+        "language": "Cambiar Idioma",
+        "discover": "Descubre PANORAMA®",
+        "infoPanorama": "PANORAMA® es un motor de análisis que permite a las organizaciones que utilizan Open edX™ impartir cursos en línea para crear sus propios paneles de gestión.",
+        "link": "Mas info"
+    },
+
+    "auth": {
+        "acceptTerms": "Por favor acepte los",
+        "complete": "Complete todos los campos para registrarse"
+    },
+
+    "tabs": {
+        "Enrollments": "Inscripciones",
+        "Engagement": "Compromiso",
+        "Grading": "Calificado",
+        "User Activity": "Actividad del Usuario",
+        "Demo 1": "Demo 1"
+    },
+    "profile": {
+        "profileUser": "Perfil de Usuario",
+        "description1": "- La carga del dominio solo se puede realizar una vez y no se puede editar posteriormente.",
+        "description2": "- El dominio puede contener las siguientes extenciones: .com, .org, .net, .gov, or .edu",
+        "description3": "- No ingreasr 'https//:',  solo 'www.', nombre y la extencion por ejemplo: 'www.aulasneo.com'",
+        "description4": "- Si por algun error deseas cambiar tu dominio, contactanos",
+        "Domain": "Dominio",
+        "accessKey": "Access Key",
+        "accessSecret": "Access Secret",
+        "btnSave": "Guardar Cambios",
+        "placeHolder": "Ingrese su"
+    },
+    "footer": {
+        "reserved": "Todos los derechos reservados",
+        "contant": "Contactanos",
+        "terms": "Condiciones de uso"
+    },
+    "errors": {
+        "error": "Error",
+        "okValidation": "Validación Ok",
+        "btnBack": "Volver",
+        "messageError": "No se puede acceder a los paneles",
+        "errorExtentionDomain": "El dominio no es valido, debe tener algunas de las siguientes extenciones: .com, .org, .net, .gov, or .edu",
+        "errorDomainExist": "El dominio ya existe",
+        "errorValidation": "Hubo un error en la validación",
+        "validationOk": "Se ha guardado correctamente"
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "header": {
+        "home": "Home",
+        "dashboard": "Dashboard",
+        "author": "Author",
+        "signOut": "Sign Out",
+        "profile": "Profile"
+    },
+    "welcome": {
+        "titleWelcome": "Welcome",
+        "mesageWelcome": "Enter the Dashboard to see the Quicksight panels.",
+        "mesageWelcomeDemo2": "Contact us to connect your Open edX® instance to PANORAMA® and start converting your data into actionable insights and strategic decisions.",
+        "mesageWelcomeDemo1": "As a new user, you can experience the full power of PANORAMA® with an anonymized set of data, for testing purposes only.",
+        "contant": "Contact us",
+        "language": "Change Language",
+        "discover": "Discover PANORAMA®",
+        "infoPanorama": "PANORAMA® is an analytics engine that allows organisations using Open edX™ to deliver online courses to create their own management dashboards.",
+        "link": "Learn more"
+    },
+
+    "auth": {
+        "acceptTerms": "Please accept the",
+        "complete": "Complete all fields to register"
+    },
+
+    "tabs": {
+        "Enrollments": "Enrollments",
+        "Engagement": "Engagement",
+        "Grading": "Grading",
+        "User Activity": "User Activity",
+        "Demo 1": "Demo 1"
+    },
+    "profile": {
+        "profileUser": "User Profile",
+        "description1": "- Domain upload can only be done once and cannot be edited later.",
+        "description2": "- The domain can contain the following extensions: .com, .org, .net, .gov, or .edu",
+        "description3": "- Do not enter 'https//:', only 'www.' name and extension, for example: 'www.aulasneo.com'",
+        "description4": "- If for some reason you want to change your domain, contact us",
+        "Domain": "Domain",
+        "accessKey": "Access Key",
+        "accessSecret": "Access Secret",
+        "btnSave": "Save Changes",
+        "placeHolder": "Input your"
+    },
+    "footer": {
+        "reserved": "All rights reserved",
+        "contant": "Contact us",
+        "terms": "Terms of use"
+    },
+    "errors": {
+        "btnBack": "Go Back",
+        "error": "Error",
+        "okValidation": "Validation Ok",
+        "messageError": "Panels cannot be accessed",
+        "errorExtentionDomain": "Domain is not a valid domain with .com, .org, .net, .gov, or .edu extension",
+        "errorDomainExist": "The domain already exists",
+        "errorValidation": "There was an error in validation",
+        "validationOk": "Saved successfully"
+    }
+}
