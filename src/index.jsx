@@ -18,11 +18,11 @@
    } 
    ReactDOM.render (
      <IntlProvider locale="en" messages={messages.en}>
-       <>
+       <AppProvider>
          <Header />
          <AppPanorama />
          <Footer />
-       </>
+       </AppProvider>
      </IntlProvider>,
      document.getElementById('root'),
 
