@@ -10,11 +10,9 @@ const Init = () => (
   <div className="init-container">
     <img src={logoPanorama} alt="Logo" className="logo-panorama" />
 
-    <Link to="https://aulasneo.com/open-edx-analytics/">
-      <h1 className="welcome-init">Weolcome</h1>
-    </Link>
+    <h2 className="welcome-init">Welcome</h2>
 
-    <Link to="/login" className="link">
+    <Link to="/panels" className="link">
       Discover <FaAngleRight />
     </Link>
     <div className="footer-init">
@@ -31,6 +29,9 @@ const Init = () => (
         <a href="https://www.aulasneo.com/">
           <img src={favicon} alt="web" className="web-icon" />
         </a>
+        <Link to="/terms-of-use" className="terms">
+          Terms of Us
+        </Link>
       </div>
 
       <div className="logo-ws">

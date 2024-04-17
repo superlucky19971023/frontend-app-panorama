@@ -8,7 +8,7 @@ const Footer = () => (
       <img src={logo} alt="Logo" className="logoFooter" />
     </a>
     <a href="https://aulasneo.com/contact/">Contact</a>
-    <a href="https://aulasneo.com/terms-of-use/">Terms of Us</a>
+    <a href="/terms-of-use">Terms of Us</a>
   </div>
 );
 

@@ -1,0 +1,42 @@
+.content-terms {
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f6f6;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  height: calc(100vh - 161px);
+  overflow-y: auto;
+  color: black;
+}
+
+.button-back {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.title-terms {
+  font-size: 1.7rem;
+  margin-bottom: 15px;
+}
+
+.link-mail {
+  font-size: 14px;
+  color: #0052cc!important;
+}
+
+@media (max-width: 528px) {
+  .link-mail {
+    font-size: 12px;
+  }
+}
+
+.link-mail:hover {
+  text-decoration: underline !important;
+}
+
+.terms {
+  text-decoration: none !important;
+}

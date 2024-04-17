@@ -40,6 +40,7 @@
   background-color: #e3a22e;
   border-radius: 23px;
   padding: 15px;
+  text-decoration: none !important;
 }
 
 @keyframes elementor-animation-pulse {
@@ -100,7 +101,7 @@
   );
   border-radius: 20%;
   position: absolute;
-  top: 86vh;
+  top: 80vh;
   right: 20px;
 }
 

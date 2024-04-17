@@ -1,15 +1,17 @@
-import { Container } from '@openedx/paragon';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
+import { Route, Routes } from "react-router-dom";
 import Init from '../../components/Init/Init';
+import TermsOfUse from '../../components/TermsOfUse/TermsOfUse'
+import Panels from '../../components/Panels/Panels'
 
 const AppPanorama = () => (
   <main>
-    <Container className="py-5">
-      <Header />
-      <Init/>
-      <Footer />
-    </Container>
+    <div className="content-panorama">
+      <Routes>
+        <Route path="/" element={<Init />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
+        <Route path="/panels" element={<Panels />} />
+      </Routes>
+    </div>
   </main>
 );
 
