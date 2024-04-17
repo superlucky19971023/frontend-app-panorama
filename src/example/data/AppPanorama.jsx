@@ -1,7 +1,7 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 import Init from '../../components/Init/Init';
-import TermsOfUse from '../../components/TermsOfUse/TermsOfUse'
-import Panels from '../../components/Panels/Panels'
+import TermsOfUse from '../../components/TermsOfUse/TermsOfUse';
+import Panels from '../../components/Panels/Panels';
 
 const AppPanorama = () => (
   <main>
