@@ -23,8 +23,8 @@
 }
 
 .link-mail {
-  font-size: 14px;
-  color: #0052cc!important;
+  font-size: 1rem;
+  color: #006DAA !important;
 }
 
 @media (max-width: 528px) {
