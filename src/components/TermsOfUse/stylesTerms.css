@@ -15,6 +15,14 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  font-weight: 500;
+  color: #000 !important;
+  background-color: #e3a22e;
+  border-radius: 16px;
+  padding: 8px;
+  text-decoration: none !important;
+  width: fit-content;
+  margin-left: auto;
 }
 
 .title-terms {

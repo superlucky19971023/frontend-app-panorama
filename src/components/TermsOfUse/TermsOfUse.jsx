@@ -2,12 +2,11 @@ import React from 'react';
 import { injectIntl } from '@edx/frontend-platform/i18n';
 import { Link } from 'react-router-dom';
 import './stylesTerms.css';
+import PropTypes from 'prop-types';
 
 import messages from './messages';
 
-const TermsOfUse = ({
-  intl,
-}) => {
+const TermsOfUse = ({ intl }) => {
   return (
     <div className="content-terms">
       <Link to="/" className="button-back">
@@ -28,7 +27,12 @@ const TermsOfUse = ({
           <p>{intl.formatMessage(messages.point2_1)}</p>
         </li>
         <li>
-          <p>{intl.formatMessage(messages.point2_2)} <a className="link-mail" href="mailto:panorama@aulasneo.com">panorama@aulasneo.com</a> . {intl.formatMessage(messages.point2_3)}</p></li>
+          <p>
+            {intl.formatMessage(messages.point2_2)}
+            <a className="link-mail" href="mailto:panorama@aulasneo.com">panorama@aulasneo.com </a>
+            {intl.formatMessage(messages.point2_3)}
+          </p>
+        </li>
       </ul>
 
       <p>
@@ -121,13 +125,22 @@ const TermsOfUse = ({
       <p>
         <strong>{intl.formatMessage(messages.subtitle11)}</strong>
       </p>
+
       <ul>
         <li>
-          <p>{intl.formatMessage(messages.point11)} <a className="link-mail" href="mailto:panorama@aulasneo.com">panorama@aulasneo.com</a>.</p>
+          <p>
+            {intl.formatMessage(messages.point11)}
+            <a className="link-mail" href="mailto:panorama@aulasneo.com">panorama@aulasneo.com</a>
+          </p>
         </li>
       </ul>
     </div >
   );
 }
+
+TermsOfUse.propTypes = {
+  intl: PropTypes.object.isRequired,
+};
+
 export default injectIntl(TermsOfUse);
 
