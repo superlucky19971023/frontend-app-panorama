@@ -1,0 +1,43 @@
+.homeWelcome {
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f6f6;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.5rem 0 0.5rem;
+  height: calc(100vh - 161px);
+  gap: 1rem;
+}
+
+.button-contact {
+  font-weight: 500;
+  fill: #000;
+  color: #000 !important;
+  background-color: #e3a22e;
+  border-radius: 23px;
+  border: none;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  text-decoration: none;
+}
+
+@keyframes elementor-animation-pulse {
+  25% {
+    transform: scale(1.1);
+  }
+
+  75% {
+    transform: scale(0.9);
+  }
+}
+
+.button-contact:hover {
+  font-weight: bolder;
+  animation-name: elementor-animation-pulse;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

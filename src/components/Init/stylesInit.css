@@ -47,6 +47,7 @@
   25% {
     transform: scale(1.1);
   }
+
   75% {
     transform: scale(0.9);
   }
@@ -88,17 +89,14 @@
 }
 
 .web-icon:hover {
-  filter: brightness(0) saturate(100%) invert(15%) sepia(77%) saturate(3120%)
-    hue-rotate(243deg) brightness(77%) contrast(115%);
+  filter: brightness(0) saturate(100%) invert(15%) sepia(77%) saturate(3120%) hue-rotate(243deg) brightness(77%) contrast(115%);
 }
 
 .button-ws {
-  background: linear-gradient(
-    5deg,
-    rgba(55, 128, 6, 1) 0%,
-    rgba(69, 196, 9, 1) 60%,
-    rgba(0, 255, 89, 1) 100%
-  );
+  background: linear-gradient(5deg,
+      rgba(55, 128, 6, 1) 0%,
+      rgba(69, 196, 9, 1) 60%,
+      rgba(0, 255, 89, 1) 100%);
   border-radius: 20%;
   position: absolute;
   top: 80vh;
@@ -106,10 +104,8 @@
 }
 
 .button-ws:hover {
-  background: linear-gradient(
-    5deg,
-    rgb(0, 255, 89, 1) 0%,
-    rgb(69, 196, 9, 1) 60%,
-    rgb(55, 128, 6, 1) 100%
-  );
+  background: linear-gradient(5deg,
+      rgb(0, 255, 89, 1) 0%,
+      rgb(69, 196, 9, 1) 60%,
+      rgb(55, 128, 6, 1) 100%);
 }

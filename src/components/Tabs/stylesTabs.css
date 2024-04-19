@@ -1,0 +1,115 @@
+@keyframes wipe-in-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.tab-container.open {
+  animation: 1.5s cubic-bezier(.25, 1, .30, 1) wipe-in-right both;
+}
+
+@keyframes wipe-out-left {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+
+  to {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+.tab-container.close {
+  animation: 1.5s cubic-bezier(.25, 1, .30, 1) wipe-out-left both;
+}
+
+.content-tabs {
+  flex-direction: column;
+  height: calc(100vh - 162px);
+  width: 29px;
+  z-index: 900;
+  background: white;
+}
+
+.buttonMenu {
+  padding: 0;
+  margin-top: -10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.buttonMenu:hover {
+  color: #023b9c !important;
+}
+
+.selected {
+  z-index: 200;
+  width: 100%;
+  white-space: normal !important;
+  background-color: #133979 !important;
+  color: white !important;
+}
+
+.tab-container {
+  width: 200px;
+  height: calc(100vh - 162px);
+  display: inline-block;
+  color: white;
+  font-size: 16px;
+  font-weight: 300;
+  overflow-wrap: break-word;
+  cursor: pointer;
+  left: 36px;
+  top: 79px;
+  position: absolute;
+  transition: 0.5s ease;
+  overflow-y: auto;
+}
+
+.tab {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.tab a {
+  /* writing-mode: vertical-lr; */
+  /* rotate: 180deg; */
+  font-size: 0.9rem;
+  overflow-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: auto;
+  width: 200px;
+  background-color: #062B60;
+  border-bottom: 1px solid white;
+  padding: 5px;
+  display: inline-block;
+  color: white !important;
+  font-weight: 300;
+  overflow-wrap: break-word;
+  cursor: pointer;
+}
+
+.tab>a:hover {
+  background-color: #133979;
+}
+
+.sidebar {
+  background: transparent;
+  position: fixed;
+  transform: rotate(-90deg);
+  border: none;
+  color: grey;
+  margin-top: 12px;
+  margin-left: -9px;
+}
