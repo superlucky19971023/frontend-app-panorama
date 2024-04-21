@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-// import CircularProgress from '@mui/material/CircularProgress';
-import { useTranslation } from 'react-i18next';
-import { DashboardTypeContext } from '../../DashboardContext';
-import Tabs from '../Tabs/Tabs';
-import Embed from '../../Embed';
-import Panels from '../Panels/Panels';
+import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { DashboardTypeContext } from "../DashboardContext";
+import Tabs from "../Tabs/Tabs";
+import Embed from "../Embed";
 
 function Home({ dashboardFunction }) {
   const { dashboardType, loader, error, response } =
@@ -14,38 +12,30 @@ function Home({ dashboardFunction }) {
 
   return (
     <div className="dashboard" id="dashboard">
-      {!error && <Embed dashboardFunction={dashboardFunction} />}
+      {!error && <Embed dashboardFunction={dashboardFunction} />} 
       {!error && (
         <>
           {loader ? (
             <div className="home">
-              Cargando...
+            Loading...
             </div>
           ) : (
             <>
-              {/* {dashboardFunction !== "author" && <Tabs />} */}
-              {response ? (
-                <div className="framesContainer" id="framesContainer">
-                  {response &&
-                    response.map((item) => (
-                      <div
-                        key={item.name}
-                        style={{
-                          width: "100%",
-                          display:
-                            dashboardType === item.displayName ? "flex" : "none",
-                        }}
-                        id={`${item.name}Container`}
-                      ></div>
-                    ))}
-                </div>
-              ) : (
-                <div className="d-flex">
-                  <Tabs />
-                  <Panels />
-                </div>
-              )
-              }
+              {dashboardFunction !== "author" && <Tabs />}
+              <div className="framesContainer" id="framesContainer">
+                {response &&
+                  response.map((item) => (
+                    <div
+                      key={item.name}
+                      style={{
+                        width: "100%",
+                        display:
+                          dashboardType === item.displayName ? "flex" : "none",
+                      }}
+                      id={`${item.name}Container`}
+                    ></div>
+                  ))}
+              </div>
             </>
           )}
         </>

@@ -1,7 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-// import { fetchAuthSession } from 'aws-amplify/auth';
-// import { get } from 'aws-amplify/api';
-// import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk';
+import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk';
 import { DashboardTypeContext } from './DashboardContext';
 
 function Embed({ dashboardFunction }) {

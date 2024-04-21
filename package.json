@@ -45,6 +45,7 @@
     "@fortawesome/free-solid-svg-icons": "5.15.4",
     "@fortawesome/react-fontawesome": "0.2.0",
     "@openedx/paragon": "^22.0.0",
+    "amazon-quicksight-embedding-sdk": "^2.6.0",
     "core-js": "3.36.1",
     "i18next": "^23.11.2",
     "i18next-http-backend": "^2.5.0",

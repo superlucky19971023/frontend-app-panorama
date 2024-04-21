@@ -8,7 +8,6 @@ export const DashboardTypeContext = createContext({
   changeLoader: () => { },
   handleDataReceived: () => { },
   itemsMenu: [],
-  changeLanguage: () => { },
 });
 
 export function DashboardTypeProvider({ children }) {
@@ -17,11 +16,6 @@ export function DashboardTypeProvider({ children }) {
   const [error, setError] = useState(null);
   const [response, setResponse] = useState("");
   const { i18n } = useTranslation(["global", "terms"]);
-
-  const changeLanguage = () => {
-    const newLanguage = i18n.language === "es" ? "en" : "es";
-    i18n.changeLanguage(newLanguage);
-  };
 
   const changeDashboardType = (value) => {
     setDashboardType(value);
@@ -47,7 +41,6 @@ export function DashboardTypeProvider({ children }) {
         handleDataReceived,
         changeError,
         changeLoader,
-        changeLanguage,
         loader,
         error,
         response,

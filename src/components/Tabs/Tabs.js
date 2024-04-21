@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { DashboardTypeContext } from '../../DashboardContext';
+import { DashboardTypeContext } from '../DashboardContext';
 import '../Tabs/stylesTabs.css';
 import { AiOutlineMenuUnfold, AiOutlineMenuFold } from 'react-icons/ai';
 
