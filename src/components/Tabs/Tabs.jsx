@@ -43,8 +43,8 @@ const Tabs = () => {
           {itemsMenu.map((item, index) => (
             <div id={`tab${index}`} className="tab" key={item.id || `item_${index}`}>
               <a
-                className={`${item == dashboardType ? "selected" : ''}`}
-                aria-current='page'
+                className={`${item === dashboardType ? 'selected' : ''}`}
+                aria-current="page"
                 href={`#${item}`}
                 onClick={() => handleMenuClick(item)}
               >

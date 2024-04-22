@@ -42,7 +42,7 @@ export const DashboardTypeProvider = ({ children }) => {
       error,
       response,
     }),
-    [dashboardType, loader, error, response]
+    [dashboardType, loader, error, response],
   );
 
   return (

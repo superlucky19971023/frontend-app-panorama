@@ -23,11 +23,11 @@ const Embed = ({ dashboardFunction }) => {
 
         const containers = {};
         for (let i = 0; i < urlResponse.length; i++) {
-          containers[urlResponse[i].name] = document.createElement("div");
+          containers[urlResponse[i].name] = document.createElement('div');
           containers[
             urlResponse[i].name
           ].id = `${urlResponse[i].name}Container`;
-        };
+        }
 
         setDashboardContainers(containers);
         changeDashboardType(urlResponse[0].displayName);
@@ -58,16 +58,16 @@ const Embed = ({ dashboardFunction }) => {
             const options = {
               url: response[i].url,
               container: container,
-              width: "100%"
+              width: '100%'
             };
 
-            if (dashboardFunction === "author") {
-              await embedConsole(options);
+            if (dashboardFunction === 'author') {
+              embedConsole(options);
             } else {
-              await embedDashboard(options);
+              embedDashboard(options);
             }
           } else {
-            console.log(`El contenedor ${containerId} no existe.`);
+            console.error(`El contenedor ${containerId} no existe.`);
           }
         }
       }
