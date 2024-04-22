@@ -17,7 +17,7 @@ const Tabs = () => {
 
   const ChanngeShowTabs = () => {
     setShowTabs(!showTabs);
-    setShowMenu(true)
+    setShowMenu(true);
   };
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const Tabs = () => {
           {itemsMenu.map((item, index) => (
             <div id={`tab${index}`} className="tab" key={index}>
               <a
-                className={`${item == dashboardType ? "selected" : ""}`}
+                className={`${item == dashboardType ? "selected" : ''}`}
                 aria-current="page"
                 href={`#${item}`}
                 onClick={() => handleMenuClick(item)}

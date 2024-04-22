@@ -2,7 +2,7 @@ import React, { useState, createContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const DashboardTypeContext = createContext({
-  dashboardType: "",
+  dashboardType: '',
   changeDashboardType: () => { },
   changeError: () => { },
   changeLoader: () => { },
@@ -10,12 +10,11 @@ export const DashboardTypeContext = createContext({
   itemsMenu: [],
 });
 
-export function DashboardTypeProvider({ children }) {
-  const [dashboardType, setDashboardType] = useState("");
+export const DashboardTypeProvider = ({ children }) => {
+  const [dashboardType, setDashboardType] = useState('');
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
-  const [response, setResponse] = useState("");
-  const { i18n } = useTranslation(["global", "terms"]);
+  const [response, setResponse] = useState('');
 
   const changeDashboardType = (value) => {
     setDashboardType(value);

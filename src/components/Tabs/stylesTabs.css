@@ -65,7 +65,7 @@
   overflow-wrap: break-word;
   cursor: pointer;
   left: 36px;
-  top: 79px;
+  top: 63px;
   position: absolute;
   transition: 0.5s ease;
   overflow-y: auto;
@@ -102,6 +102,7 @@
 
 .tab>a:hover {
   background-color: #133979;
+  text-decoration: none !important;
 }
 
 .sidebar {

@@ -7,3 +7,58 @@
 
 @import "~@edx/frontend-component-header/dist/index";
 @import "~@edx/frontend-component-footer/dist/footer";
+
+.content-panorama {
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(100vh - 161px);
+    overflow-y: auto;
+    color: black;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.circularProgress {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    background-color: #f6f6f6;
+    width: 100%;
+    justify-content: center;
+    height: calc(100vh - 161px);
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem 0 0.5rem;
+    height: calc(100vh - 161px);
+}
+
+.dashboard {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-end;
+    align-content: center;
+    overflow: hidden;
+}
+
+.quicksight-embedding-iframe {
+    height: calc(100vh - 162px);
+}
+
+.framesContainer {
+    width: 100%;
+    border: 1px solid var(--tabs-border-color);
+}

@@ -1,42 +1,27 @@
-import { useState, useEffect, useContext } from 'react';
-import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk';
+import React, { useState, useEffect, useContext } from 'react';
 import { DashboardTypeContext } from './DashboardContext';
+import { AppContext } from '@edx/frontend-platform/react';
+import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+import { camelCaseObject } from '@edx/frontend-platform';
+import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk'
 
 function Embed({ dashboardFunction }) {
   const { changeDashboardType, handleDataReceived, changeError, changeLoader } =
     useContext(DashboardTypeContext);
 
-  const [response, setResponse] = useState("");
+  const { config } = useContext(AppContext);
+  const [response, setResponse] = useState(null);
   const [dashboardContainers, setDashboardContainers] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
+      const url = `${config.LMS_BASE_URL}/panorama/api/get-embed-url`;
       try {
-        const data = await fetchAuthSession();
-        console.log("user data", data)
-        const jwtToken = data.tokens.idToken.toString();
-        const payloadSub = data.tokens.idToken.payload.sub;
-        const email = data.tokens.idToken.payload.email;
-
-        const params = {
-          headers: {},
-          response: true,
-          queryParams: {
-            jwtToken: jwtToken,
-            payloadSub: payloadSub,
-            email: email,
-            dashboardFunction: dashboardFunction,
-          },
-        };
-
-        const restOperation = await get({
-          apiName: "quicksight",
-          path: "/getQuickSightDashboardEmbedURL",
-          options: params,
-        });
-        const { body } = await restOperation.response;
-        const urlResponse = await body.json();
+        const { data } = await getAuthenticatedHttpClient().get(url);
+        const enrollmentData = camelCaseObject(data);
+        const urlResponse = await data.body;
         setResponse(urlResponse);
+        handleDataReceived(urlResponse);
 
         const containers = {};
         for (let i = 0; i < urlResponse.length; i++) {
@@ -45,19 +30,20 @@ function Embed({ dashboardFunction }) {
             urlResponse[i].name
           ].id = `${urlResponse[i].name}Container`;
         }
-        setDashboardContainers(containers);
 
+        setDashboardContainers(containers);
         changeDashboardType(urlResponse[0].displayName);
         changeLoader(false);
-        handleDataReceived(urlResponse);
+
+
       } catch (error) {
-        console.log(error);
-        changeError(error?.$metadata?.httpStatusCode);
+        const httpErrorStatus = error?.response?.status;
+        changeError(httpErrorStatus);
         changeLoader(false);
       }
     };
     fetchData();
-  }, [dashboardFunction]);
+  }, [config.LMS_BASE_URL]);
 
   useEffect(() => {
     const embedDashboards = async () => {
@@ -77,7 +63,8 @@ function Embed({ dashboardFunction }) {
               container: container,
               width: "100%"
             };
-            if (dashboardFunction == "author") {
+
+            if (dashboardFunction === "author") {
               await embedConsole(options);
             } else {
               await embedDashboard(options);
