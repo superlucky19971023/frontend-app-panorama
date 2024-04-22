@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk';
-import { DashboardTypeContext } from './DashboardContext';
 import { AppContext } from '@edx/frontend-platform/react';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { camelCaseObject } from '@edx/frontend-platform';
+import { DashboardTypeContext } from './DashboardContext';
 
 const Embed = ({ dashboardFunction }) => {
   const { changeDashboardType, handleDataReceived, changeError, changeLoader } = useContext(DashboardTypeContext);
@@ -50,7 +50,7 @@ const Embed = ({ dashboardFunction }) => {
 
         for (let i = 0; i < response.length; i++) {
           const containerId = `${response[i].name}Container`;
-          let container = document.getElementById(containerId);
+          const container = document.getElementById(containerId);
           if (container.firstChild) {
             container.removeChild(container.firstChild);
           }
@@ -58,7 +58,7 @@ const Embed = ({ dashboardFunction }) => {
             const options = {
               url: response[i].url,
               container: container,
-              width: '100%'
+              width: '100%',
             };
 
             if (dashboardFunction === 'author') {
