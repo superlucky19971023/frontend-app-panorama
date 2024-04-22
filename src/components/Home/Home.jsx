@@ -1,15 +1,13 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import CircularProgress from '@mui/material/CircularProgress';
 import { DashboardTypeContext } from '../DashboardContext';
 import Tabs from '../Tabs/Tabs';
 import Embed from '../Embed';
-import CircularProgress from "@mui/material/CircularProgress";
 
 const Home = ({ dashboardFunction }) => {
-  const { dashboardType, loader, error, response } =
-    useContext(DashboardTypeContext);
-
-  const { t } = useTranslation(["global"]);
+  const { dashboardType, loader, error, response } = useContext(DashboardTypeContext);
+  const { t } = useTranslation(['global']);
 
   return (
     <div className="dashboard" id="dashboard">
@@ -22,7 +20,7 @@ const Home = ({ dashboardFunction }) => {
             </div>
           ) : (
             <>
-              {dashboardFunction !== "author" && <Tabs />}
+              {dashboardFunction !== 'author' && <Tabs />}
               <div className="framesContainer" id="framesContainer">
                 {response &&
                   response.map((item) => (
@@ -53,6 +51,6 @@ const Home = ({ dashboardFunction }) => {
       )}
     </div>
   );
-}
+};
 
 export default Home;

@@ -1,5 +1,4 @@
-import React, { useState, createContext } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState, createContext, useMemo } from 'react';
 
 export const DashboardTypeContext = createContext({
   dashboardType: '',
@@ -32,20 +31,23 @@ export const DashboardTypeProvider = ({ children }) => {
     setLoader(loader);
   };
 
+  const contextValue = useMemo(
+    () => ({
+      dashboardType,
+      changeDashboardType,
+      handleDataReceived,
+      changeError,
+      changeLoader,
+      loader,
+      error,
+      response,
+    }),
+    [dashboardType, loader, error, response]
+  );
+
   return (
-    <DashboardTypeContext.Provider
-      value={{
-        dashboardType,
-        changeDashboardType,
-        handleDataReceived,
-        changeError,
-        changeLoader,
-        loader,
-        error,
-        response,
-      }}
-    >
+    <DashboardTypeContext.Provider value={contextValue}>
       {children}
     </DashboardTypeContext.Provider>
   );
-}
+};

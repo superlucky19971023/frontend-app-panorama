@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk';
 import { DashboardTypeContext } from './DashboardContext';
 import { AppContext } from '@edx/frontend-platform/react';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { camelCaseObject } from '@edx/frontend-platform';
-import { createEmbeddingContext } from 'amazon-quicksight-embedding-sdk'
 
-function Embed({ dashboardFunction }) {
-  const { changeDashboardType, handleDataReceived, changeError, changeLoader } =
-    useContext(DashboardTypeContext);
-
+const Embed = ({ dashboardFunction }) => {
+  const { changeDashboardType, handleDataReceived, changeError, changeLoader } = useContext(DashboardTypeContext);
   const { config } = useContext(AppContext);
   const [response, setResponse] = useState(null);
   const [dashboardContainers, setDashboardContainers] = useState({});
@@ -29,12 +27,11 @@ function Embed({ dashboardFunction }) {
           containers[
             urlResponse[i].name
           ].id = `${urlResponse[i].name}Container`;
-        }
+        };
 
         setDashboardContainers(containers);
         changeDashboardType(urlResponse[0].displayName);
         changeLoader(false);
-
 
       } catch (error) {
         const httpErrorStatus = error?.response?.status;
@@ -79,6 +76,6 @@ function Embed({ dashboardFunction }) {
   }, [response]);
 
   return null;
-}
+};
 
 export default Embed;
