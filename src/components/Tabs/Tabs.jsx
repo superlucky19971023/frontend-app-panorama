@@ -24,7 +24,7 @@ const Tabs = () => {
       for (let i = 0; i < response.length; i++) {
         updatedItemsMenu.push(response[i].displayName);
       }
-      setItemsMenu(updatedItemsMenu.reverse());
+      setItemsMenu(updatedItemsMenu);
     }
   }, [response, itemsMenu]);
 
