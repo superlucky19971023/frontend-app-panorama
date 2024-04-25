@@ -31,7 +31,7 @@ const Tabs = () => {
   return (
     <div className="content-tabs">
       <div className="sidebar">
-        <button type="button" className="buttonMenu" onClick={ChanngeShowTabs}>Dashboard</button>
+        <button type="button" className="buttonMenu" onClick={ChanngeShowTabs}>Dashboards</button>
       </div>
 
       {showMenu && (
