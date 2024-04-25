@@ -30,12 +30,8 @@ const Tabs = () => {
 
   return (
     <div className="content-tabs">
-      <button type="button" className="buttonMenu" onClick={ChanngeShowTabs}>
-        {showTabs ? <AiOutlineMenuFold /> : <AiOutlineMenuUnfold />}
-      </button>
-
       <div className="sidebar">
-        Menu
+        <button type="button" className="buttonMenu" onClick={ChanngeShowTabs}>Dashboard</button>
       </div>
 
       {showMenu && (
