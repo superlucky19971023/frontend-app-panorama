@@ -12,7 +12,6 @@ const Embed = () => {
   const [dashboardContainers, setDashboardContainers] = useState({});
 
   useEffect(() => {
-    console.log("entre al use effect")
     changeLoader(true);
     const fetchData = async () => {
       try {

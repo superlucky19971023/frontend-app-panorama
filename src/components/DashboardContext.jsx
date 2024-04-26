@@ -1,4 +1,5 @@
 import React, { useState, createContext, useMemo } from 'react';
+import PropTypes from 'prop-types';
 
 export const DashboardTypeContext = createContext({
   dashboardType: '',
@@ -7,7 +8,7 @@ export const DashboardTypeContext = createContext({
   changeLoader: () => { },
   handleDataReceived: () => { },
   itemsMenu: [],
-  userRole: 'READER'
+  userRole: 'READER',
 });
 
 export const DashboardTypeProvider = ({ children }) => {
@@ -29,12 +30,12 @@ export const DashboardTypeProvider = ({ children }) => {
     setResponse(data);
   };
 
-  const changeError = (error) => {
-    setError(error);
+  const changeError = (newError) => {
+    setError(newError);
   };
 
-  const changeLoader = (loader) => {
-    setLoader(loader);
+  const changeLoader = (newLoader) => {
+    setLoader(newLoader);
   };
 
   const contextValue = useMemo(
@@ -48,7 +49,7 @@ export const DashboardTypeProvider = ({ children }) => {
       error,
       response,
       changeDashboardFunction,
-      dashboardFunction
+      dashboardFunction,
     }),
     [dashboardType, loader, error, response, dashboardFunction],
   );
@@ -58,4 +59,8 @@ export const DashboardTypeProvider = ({ children }) => {
       {children}
     </DashboardTypeContext.Provider>
   );
+};
+
+DashboardTypeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
