@@ -6,12 +6,13 @@ import './stylesTabs.css';
 
 const Tabs = () => {
   const {
-    changeDashboardType, dashboardType, response, dashboardFunction, changeDashboardFunction,
+    changeDashboardType, dashboardType, response: dashboardResponse, dashboardFunction, changeDashboardFunction,
   } = useContext(DashboardTypeContext);
   const [itemsMenu, setItemsMenu] = useState([]);
   const [showTabs, setShowTabs] = useState(false);
   const [userRole, setUserRole] = useState('');
   const { config } = useContext(AppContext);
+  
   const getUserRole = async () => {
     const response = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
     setUserRole(response.data.body);
@@ -20,6 +21,16 @@ const Tabs = () => {
   useEffect(() => {
     getUserRole();
   }, []);
+
+  useEffect(() => {
+    if (dashboardResponse && dashboardResponse.length > 0 && itemsMenu.length === 0) {
+      const updatedItemsMenu = [];
+      for (let i = 0; i < dashboardResponse.length; i++) {
+        updatedItemsMenu.push(dashboardResponse[i].displayName);
+      }
+      setItemsMenu(updatedItemsMenu);
+    }
+  }, [dashboardResponse, itemsMenu]);
 
   const handleMenuClick = (value) => {
     changeDashboardType(value);
@@ -35,16 +46,6 @@ const Tabs = () => {
     }
     changeDashboardFunction(e.target.value);
   };
-
-  useEffect(() => {
-    if (response && response.length > 0 && itemsMenu.length === 0) {
-      const updatedItemsMenu = [];
-      for (let i = 0; i < response.length; i++) {
-        updatedItemsMenu.push(response[i].displayName);
-      }
-      setItemsMenu(updatedItemsMenu);
-    }
-  }, [response, itemsMenu]);
 
   return (
     <div className="content-tabs">

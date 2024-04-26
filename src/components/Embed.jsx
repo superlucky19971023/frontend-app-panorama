@@ -73,15 +73,12 @@ const Embed = () => {
             }
 
             changeLoader(false);
-          } else {
-            console.log(`El contenedor ${containerId} no existe.`);
           }
         }
       }
     };
     embedDashboards();
   }, [response]);
-  
   return null;
 };
 
