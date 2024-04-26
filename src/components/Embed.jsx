@@ -7,7 +7,7 @@ import { DashboardTypeContext } from './DashboardContext';
 
 const Embed = () => {
   const {
-    changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction
+    changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction,
   } = useContext(DashboardTypeContext);
   const { config } = useContext(AppContext);
   const [response, setResponse] = useState(null);
@@ -35,7 +35,6 @@ const Embed = () => {
         setDashboardContainers(containers);
         changeDashboardType(urlResponse[0].displayName);
         changeLoader(false);
-
       } catch (error) {
         const httpErrorStatus = error?.response?.status;
         changeError(httpErrorStatus);

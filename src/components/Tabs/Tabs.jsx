@@ -6,7 +6,7 @@ import './stylesTabs.css';
 
 const Tabs = () => {
   const {
-    changeDashboardType, dashboardType, response, dashboardFunction, changeDashboardFunction
+    changeDashboardType, dashboardType, response, dashboardFunction, changeDashboardFunction,
   } = useContext(DashboardTypeContext);
   const [itemsMenu, setItemsMenu] = useState([]);
   const [showTabs, setShowTabs] = useState();
@@ -57,10 +57,10 @@ const Tabs = () => {
         }
         <button
           type="button"
-          className={`buttonMenu`}
+          className="buttonMenu"
           onClick={ChangeShowTabs}
           name="dashboards-button"
-          value='READER'>Dashboards
+          value="READER">Dashboards
         </button>
       </div>
 
