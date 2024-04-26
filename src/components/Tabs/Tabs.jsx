@@ -27,7 +27,7 @@ const Tabs = () => {
     changeDashboardType(value);
   };
 
-  const ChanngeShowTabs = (e) => {
+  const ChangeShowTabs = (e) => {
     if (e.target.name == "dashboards-button"){
       setShowTabs(!showTabs);
       setShowMenu(true);
@@ -53,8 +53,8 @@ const Tabs = () => {
   return (
     <div className="content-tabs">
       <div className="sidebar">
-        {(userRole == "AUTHOR" || userRole == "AI_AUTHOR") && <button type="button" className={`buttonMenu ${(dashboardFunction == "AUTHOR" ||  dashboardFunction == "AI_AUTHOR") && "disabled"}`} onClick={ChanngeShowTabs} value={userRole == "AUTHOR" ? "AUTHOR" : "AI_AUTHOR"}>Studio</button>}
-        <button type="button" className={`buttonMenu ${dashboardFunction == "READER" && "disabled"}`} onClick={ChanngeShowTabs} name="dashboards-button" value="READER">Dashboards</button>
+        {(userRole == "AUTHOR" || userRole == "AI_AUTHOR") && <button type="button" className={`buttonMenu ${(dashboardFunction == "AUTHOR" ||  dashboardFunction == "AI_AUTHOR") && "disabled"}`} onClick={ChangeShowTabs} value={userRole == "AUTHOR" ? "AUTHOR" : "AI_AUTHOR"}>Studio</button>}
+        <button type="button" className={`buttonMenu`} onClick={ChangeShowTabs} name="dashboards-button" value="READER">Dashboards</button>
       </div>
 
       {(showMenu && dashboardFunction == "READER") && (

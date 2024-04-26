@@ -13,6 +13,7 @@ const Embed = () => {
 
   useEffect(() => {
     console.log("entre al use effect")
+    changeLoader(true);
     const fetchData = async () => {
       try {
         const url = `${config.LMS_BASE_URL}/panorama/api/get-embed-url?dashboard_function=${dashboardFunction}`; 
@@ -46,6 +47,7 @@ const Embed = () => {
 
   useEffect(() => {
     const embedDashboards = async () => {
+      changeLoader(true);
       if (response) {
         const embeddingContext = await createEmbeddingContext();
         const { embedDashboard, embedConsole, embedQSearchBar } = embeddingContext;
@@ -70,6 +72,8 @@ const Embed = () => {
             } else if (dashboardFunction === 'AI_AUTHOR'){
               embedQSearchBar(options);
             }
+
+            changeLoader(false);
           } else {
             console.error(`El contenedor ${containerId} no existe.`);
           }
