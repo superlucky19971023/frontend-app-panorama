@@ -12,7 +12,6 @@ const Tabs = () => {
   const [showTabs, setShowTabs] = useState(false);
   const [userRole, setUserRole] = useState('');
   const { config } = useContext(AppContext);
-  
   const getUserRole = async () => {
     const response = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
     setUserRole(response.data.body);
