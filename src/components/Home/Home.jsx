@@ -6,7 +6,9 @@ import Tabs from '../Tabs/Tabs';
 import Embed from '../Embed';
 
 const Home = () => {
-  const { dashboardType, loader, error, response } = useContext(DashboardTypeContext);
+  const {
+    dashboardType, loader, error, response
+  } = useContext(DashboardTypeContext);
   const { t } = useTranslation(['global']);
 
   return (
@@ -22,18 +24,17 @@ const Home = () => {
             <>
               <Tabs />
               <div className="framesContainer" id="framesContainer">
-                {response &&
-                  response.map((item) => (
-                    <div
-                      key={item.name}
-                      style={{
-                        width: '100%',
-                        display:
-                          dashboardType === item.displayName ? 'flex' : 'none',
-                      }}
-                      id={`${item.name}Container`}
-                    />
-                  ))}
+                {response && response.map((item) => (
+                  <div
+                    key={item.name}
+                    style={{
+                      width: '100%',
+                      display:
+                        dashboardType === item.displayName ? 'flex' : 'none',
+                    }}
+                    id={`${item.name}Container`}
+                  />
+                ))}
               </div>
             </>
           )}

@@ -6,7 +6,9 @@ import { camelCaseObject } from '@edx/frontend-platform';
 import { DashboardTypeContext } from './DashboardContext';
 
 const Embed = () => {
-  const { changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction } = useContext(DashboardTypeContext);
+  const {
+    changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction
+  } = useContext(DashboardTypeContext);
   const { config } = useContext(AppContext);
   const [response, setResponse] = useState(null);
   const [dashboardContainers, setDashboardContainers] = useState({});
@@ -15,7 +17,7 @@ const Embed = () => {
     changeLoader(true);
     const fetchData = async () => {
       try {
-        const url = `${config.LMS_BASE_URL}/panorama/api/get-embed-url?dashboard_function=${dashboardFunction}`; 
+        const url = `${config.LMS_BASE_URL}/panorama/api/get-embed-url?dashboard_function=${dashboardFunction}`;
         const { data } = await getAuthenticatedHttpClient().get(url);
         const enrollmentData = camelCaseObject(data);
         const urlResponse = await data.body;
@@ -41,7 +43,7 @@ const Embed = () => {
       }
     };
     fetchData();
-    
+
   }, [config.LMS_BASE_URL, dashboardFunction]);
 
   useEffect(() => {
@@ -66,15 +68,15 @@ const Embed = () => {
 
             if (dashboardFunction === 'AUTHOR') {
               embedConsole(options);
-            } else if (dashboardFunction === 'READER'){
+            } else if (dashboardFunction === 'READER') {
               embedDashboard(options);
-            } else if (dashboardFunction === 'AI_AUTHOR'){
+            } else if (dashboardFunction === 'AI_AUTHOR') {
               embedQSearchBar(options);
             }
 
             changeLoader(false);
           } else {
-            console.error(`El contenedor ${containerId} no existe.`);
+            console.log(`El contenedor ${containerId} no existe.`);
           }
         }
       }
