@@ -50,12 +50,16 @@ const Tabs = () => {
     <div className="content-tabs">
       <div className="sidebar">
         {
-          (userRole === 'AUTHOR' || userRole === 'AI_AUTHOR') &&
-          <button
-            type="button"
-            className={`buttonMenu ${(dashboardFunction === 'AUTHOR' || dashboardFunction === 'AI_AUTHOR') && 'disabled'}`}
-            onClick={ChangeShowTabs} value={userRole === 'AUTHOR' ? 'AUTHOR' : 'AI_AUTHOR'}>Studio
-          </button>
+          (userRole === 'AUTHOR' || userRole === 'AI_AUTHOR') && (
+            <button
+              type="button"
+              className={`buttonMenu ${(dashboardFunction === 'AUTHOR' || dashboardFunction === 'AI_AUTHOR') && 'disabled'}`}
+              onClick={ChangeShowTabs}
+              value={userRole === 'AUTHOR' ? 'AUTHOR' : 'AI_AUTHOR'}
+            >
+              Studio
+            </button>
+          )
         }
         <button
           type="button"
@@ -63,7 +67,9 @@ const Tabs = () => {
           onClick={ChangeShowTabs}
           onBlur={handleStudioBlur}
           name="dashboards-button"
-          value="READER">Dashboards
+          value="READER"
+        >
+          Dashboards
         </button>
       </div>
 

@@ -20,7 +20,7 @@ const Embed = () => {
         const url = `${config.LMS_BASE_URL}/panorama/api/get-embed-url?dashboard_function=${dashboardFunction}`;
         const { data } = await getAuthenticatedHttpClient().get(url);
         const enrollmentData = camelCaseObject(data);
-        const urlResponse = await data.body;
+        const urlResponse = await enrollmentData.body;
         setResponse(urlResponse);
         handleDataReceived(urlResponse);
 
@@ -42,7 +42,6 @@ const Embed = () => {
       }
     };
     fetchData();
-
   }, [config.LMS_BASE_URL, dashboardFunction]);
 
   useEffect(() => {
@@ -82,7 +81,7 @@ const Embed = () => {
     };
     embedDashboards();
   }, [response]);
-
+  
   return null;
 };
 
