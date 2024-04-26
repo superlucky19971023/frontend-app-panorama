@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CircularProgress from '@mui/material/CircularProgress';
 import { DashboardTypeContext } from '../DashboardContext';
 import Tabs from '../Tabs/Tabs';
 import Embed from '../Embed';
 
-const Home = ({ dashboardFunction }) => {
+const Home = () => {
   const { dashboardType, loader, error, response } = useContext(DashboardTypeContext);
   const { t } = useTranslation(['global']);
-
+  
   return (
     <div className="dashboard" id="dashboard">
-      {!error && <Embed dashboardFunction={dashboardFunction} />}
+      {!error && <Embed />}
       {!error && (
         <>
           {loader ? (
@@ -20,7 +20,7 @@ const Home = ({ dashboardFunction }) => {
             </div>
           ) : (
             <>
-              {dashboardFunction !== 'author' && <Tabs />}
+              <Tabs />
               <div className="framesContainer" id="framesContainer">
                 {response &&
                   response.map((item) => (

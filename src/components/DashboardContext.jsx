@@ -7,6 +7,7 @@ export const DashboardTypeContext = createContext({
   changeLoader: () => { },
   handleDataReceived: () => { },
   itemsMenu: [],
+  userRole: 'READER'
 });
 
 export const DashboardTypeProvider = ({ children }) => {
@@ -14,6 +15,11 @@ export const DashboardTypeProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
   const [error, setError] = useState(null);
   const [response, setResponse] = useState('');
+  const [dashboardFunction, setDashboardFunction] = useState('READER');
+
+  const changeDashboardFunction = (value) => {
+    setDashboardFunction(value);
+  };
 
   const changeDashboardType = (value) => {
     setDashboardType(value);
@@ -41,8 +47,10 @@ export const DashboardTypeProvider = ({ children }) => {
       loader,
       error,
       response,
+      changeDashboardFunction,
+      dashboardFunction
     }),
-    [dashboardType, loader, error, response],
+    [dashboardType, loader, error, response, dashboardFunction],
   );
 
   return (

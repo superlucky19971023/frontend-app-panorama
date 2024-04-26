@@ -5,16 +5,17 @@ import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { camelCaseObject } from '@edx/frontend-platform';
 import { DashboardTypeContext } from './DashboardContext';
 
-const Embed = ({ dashboardFunction }) => {
-  const { changeDashboardType, handleDataReceived, changeError, changeLoader } = useContext(DashboardTypeContext);
+const Embed = () => {
+  const { changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction } = useContext(DashboardTypeContext);
   const { config } = useContext(AppContext);
   const [response, setResponse] = useState(null);
   const [dashboardContainers, setDashboardContainers] = useState({});
 
   useEffect(() => {
+    console.log("entre al use effect")
     const fetchData = async () => {
       try {
-        const url = `${config.LMS_BASE_URL}/panorama/api/get-embed-url`; 
+        const url = `${config.LMS_BASE_URL}/panorama/api/get-embed-url?dashboard_function=${dashboardFunction}`; 
         const { data } = await getAuthenticatedHttpClient().get(url);
         const enrollmentData = camelCaseObject(data);
         const urlResponse = await data.body;
@@ -40,15 +41,14 @@ const Embed = ({ dashboardFunction }) => {
       }
     };
     fetchData();
-  }, [config.LMS_BASE_URL]);
+    
+  }, [config.LMS_BASE_URL, dashboardFunction]);
 
   useEffect(() => {
     const embedDashboards = async () => {
       if (response) {
         const embeddingContext = await createEmbeddingContext();
         const { embedDashboard, embedConsole, embedQSearchBar } = embeddingContext;
-        const userRoleReq = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
-        const userRole = userRoleReq.data.body
 
         for (let i = 0; i < response.length; i++) {
           const containerId = `${response[i].name}Container`;
@@ -63,11 +63,11 @@ const Embed = ({ dashboardFunction }) => {
               width: '100%',
             };
 
-            if (userRole === 'AUTHOR') {
+            if (dashboardFunction === 'AUTHOR') {
               embedConsole(options);
-            } else if (userRole === 'READER'){
+            } else if (dashboardFunction === 'READER'){
               embedDashboard(options);
-            } else if (userRole === 'AI_AUTHOR'){
+            } else if (dashboardFunction === 'AI_AUTHOR'){
               embedQSearchBar(options);
             }
           } else {
