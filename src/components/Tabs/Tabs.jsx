@@ -9,8 +9,7 @@ const Tabs = () => {
     changeDashboardType, dashboardType, response, dashboardFunction, changeDashboardFunction,
   } = useContext(DashboardTypeContext);
   const [itemsMenu, setItemsMenu] = useState([]);
-  const [showTabs, setShowTabs] = useState();
-  const [showMenu, setShowMenu] = useState(false);
+  const [showTabs, setShowTabs] = useState(false);
   const [userRole, setUserRole] = useState('');
   const { config } = useContext(AppContext);
   const getUserRole = async () => {
@@ -26,10 +25,13 @@ const Tabs = () => {
     changeDashboardType(value);
   };
 
+  const handleStudioBlur = () => {
+    setShowTabs(false);
+  };
+
   const ChangeShowTabs = (e) => {
     if (e.target.name === 'dashboards-button') {
       setShowTabs(!showTabs);
-      setShowMenu(true);
     }
     changeDashboardFunction(e.target.value);
   };
@@ -59,12 +61,13 @@ const Tabs = () => {
           type="button"
           className="buttonMenu"
           onClick={ChangeShowTabs}
+          onBlur={handleStudioBlur}
           name="dashboards-button"
           value="READER">Dashboards
         </button>
       </div>
 
-      {(showMenu && dashboardFunction === 'READER') && (
+      {(dashboardFunction === 'READER') && (
         <div className={`tab-container ${showTabs ? 'open' : 'close'}`}>
           {itemsMenu.map((item, index) => (
             <div id={`tab${index}`} className="tab" key={item.id || `item_${index}`}>

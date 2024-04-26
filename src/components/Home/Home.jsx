@@ -12,13 +12,13 @@ const Home = () => {
   return (
     <div className="dashboard" id="dashboard">
       {!error && <Embed />}
+      <Tabs />
       {!error && loader ? (
         <div className="circularProgress">
           <CircularProgress />
         </div>
       ) : (
         <>
-          <Tabs />
           <div className="framesContainer" id="framesContainer">
             {response &&
               response.map((item) => (
