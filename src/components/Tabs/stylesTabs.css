@@ -119,3 +119,10 @@
   margin-top: 63px;
   margin-left: -90px;
 }
+
+.logo-panorama {
+  transform: rotate(-90deg);
+  margin-top: calc(100vh - 290px);
+  margin-left: -87px;
+  position: sticky;
+}

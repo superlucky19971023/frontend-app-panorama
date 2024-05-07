@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { AppContext } from '@edx/frontend-platform/react';
 import { DashboardTypeContext } from '../DashboardContext';
+import logo from '../../images/panorama-by-aulasneo-small.png';
 import './stylesTabs.css';
 
 const Tabs = () => {
@@ -48,7 +49,7 @@ const Tabs = () => {
 
   return (
     <div className="content-tabs">
-      <div className="sidebar">
+      <div className="sidebar">     
         {
           (userRole === 'AUTHOR' || userRole === 'AI_AUTHOR') && (
             <button
@@ -72,7 +73,7 @@ const Tabs = () => {
           Dashboards
         </button>
       </div>
-
+      <img alt="logo-panorama" src={logo} className='logo-panorama' />
       {(dashboardFunction === 'READER') && (
         <div className={`tab-container ${showTabs ? 'open' : 'close'}`}>
           {itemsMenu.map((item, index) => (
@@ -89,6 +90,7 @@ const Tabs = () => {
           ))}
         </div>
       )}
+
     </div>
   );
 };
