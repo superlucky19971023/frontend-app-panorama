@@ -77,7 +77,7 @@ const Tabs = () => {
       {(dashboardFunction === 'READER') && (
         <div className={`tab-container ${showTabs ? 'open' : 'close'}`}>
           {itemsMenu.map((item, index) => (
-            <div id={`tab${index}`} className="tab" key={item.id || `item_${index}`}>
+            <div id={`tab${index}`} className="tab" key={`item_${index}`}>
               <a
                 className={`${item === dashboardType ? 'selected' : ''}`}
                 aria-current="page"
