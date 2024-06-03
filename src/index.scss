@@ -33,17 +33,6 @@
     height: calc(100vh - 161px);
 }
 
-.home {
-    display: flex;
-    flex-direction: column;
-    background-color: #f6f6f6;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 0 0.5rem 0 0.5rem;
-    height: calc(100vh - 161px);
-}
-
 .dashboard {
     width: 100%;
     display: flex;
@@ -61,4 +50,14 @@
 .framesContainer {
     width: 100%;
     border: 1px solid var(--tabs-border-color);
+}
+
+.framesContainerHome {
+    width: 100%;
+    height: calc(100vh - 160px);
+}
+
+.homes-iframe {
+    width: 100%;
+    height: calc(100vh - 160px);
 }
