@@ -80,7 +80,7 @@ const Embed = () => {
                     {
                       Name: 'userId',
                       Values: [
-                        'aca va el id del usuario'
+                        authenticatedUser.userId
                       ]
                     },
                     {
