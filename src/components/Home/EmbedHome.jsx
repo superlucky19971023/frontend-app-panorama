@@ -9,7 +9,7 @@ const EmbedHome = () => {
   const {
     changeHomeMode, changeError
   } = useContext(DashboardTypeContext);
-  const { config } = useContext(AppContext);
+  const { config, authenticatedUser } = useContext(AppContext);
   const [modeHome, setModeHome] = useState();
 
   useEffect(() => {
