@@ -9,9 +9,15 @@ const Embed = () => {
   const {
     changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction,
   } = useContext(DashboardTypeContext);
-  const { config } = useContext(AppContext);
+  const { config, authenticatedUser } = useContext(AppContext);
   const [response, setResponse] = useState(null);
   const [dashboardContainers, setDashboardContainers] = useState({});
+  const [userRole, setUserRole] = useState("");
+
+  const getUserRole = async () => {
+    const response = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
+    setUserRole(response.data.body);
+  };
 
   useEffect(() => {
     changeLoader(true);
@@ -35,6 +41,7 @@ const Embed = () => {
         setDashboardContainers(containers);
         changeDashboardType(urlResponse[0].displayName);
         changeLoader(false);
+        getUserRole();
       } catch (error) {
         const httpErrorStatus = error?.response?.status;
         changeError(httpErrorStatus);
@@ -67,7 +74,35 @@ const Embed = () => {
             if (dashboardFunction === 'AUTHOR') {
               embedConsole(options);
             } else if (dashboardFunction === 'READER') {
-              embedDashboard(options);
+              if (userRole == 'STUDENT'){
+                const contentOptions = {
+                  parameters: [
+                    {
+                      Name: 'userId',
+                      Values: [
+                        'aca va el id del usuario'
+                      ]
+                    },
+                    {
+                      Name: 'lms',
+                      Values: [
+                        config.LMS_BASE_URL
+                      ]
+                    }
+                  ]
+                }  
+                const embededDashboard = await embedDashboard(options, contentOptions);
+                embededDashboard.setParameters([{
+                  Name: 'userId',
+                  Values: authenticatedUser.userId
+                },
+                {
+                  Name: 'lms',
+                  Values: config.LMS_BASE_URL
+                }])
+              } else {
+                embedDashboard(options);
+              }
             } else if (dashboardFunction === 'AI_AUTHOR') {
               embedQSearchBar(options);
             }
