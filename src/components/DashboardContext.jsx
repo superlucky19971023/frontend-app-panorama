@@ -6,9 +6,11 @@ export const DashboardTypeContext = createContext({
   changeDashboardType: () => { },
   changeError: () => { },
   changeLoader: () => { },
+  changeHomeMode : () => {},
   handleDataReceived: () => { },
   itemsMenu: [],
   userRole: 'READER',
+  homeMode: 'DEMO',
 });
 
 export const DashboardTypeProvider = ({ children }) => {
@@ -17,6 +19,7 @@ export const DashboardTypeProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [response, setResponse] = useState('');
   const [dashboardFunction, setDashboardFunction] = useState('READER');
+  const [homeMode, setHomeMode] = useState('DEMO')
 
   const changeDashboardFunction = (value) => {
     setDashboardFunction(value);
@@ -24,6 +27,10 @@ export const DashboardTypeProvider = ({ children }) => {
 
   const changeDashboardType = (value) => {
     setDashboardType(value);
+  };
+
+  const changeHomeMode = (value) => {
+    setHomeMode(value);
   };
 
   const handleDataReceived = (data) => {
@@ -43,6 +50,7 @@ export const DashboardTypeProvider = ({ children }) => {
       dashboardType,
       changeDashboardType,
       handleDataReceived,
+      changeHomeMode,
       changeError,
       changeLoader,
       loader,
@@ -50,8 +58,9 @@ export const DashboardTypeProvider = ({ children }) => {
       response,
       changeDashboardFunction,
       dashboardFunction,
+      homeMode,
     }),
-    [dashboardType, loader, error, response, dashboardFunction],
+    [dashboardType, loader, error, response, dashboardFunction, homeMode,],
   );
 
   return (

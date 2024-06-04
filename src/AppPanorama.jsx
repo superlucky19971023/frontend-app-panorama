@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from './components/Home/Home';
 import { DashboardTypeProvider } from './components/DashboardContext';
+import Panels from './components/Panels/Panels';
+import Home from './components/Home/Home';
 
 const AppPanorama = () => (
   <main>
@@ -8,6 +9,7 @@ const AppPanorama = () => (
       <DashboardTypeProvider>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/panels" element={<Panels />} />
         </Routes>
       </DashboardTypeProvider>
     </div>
