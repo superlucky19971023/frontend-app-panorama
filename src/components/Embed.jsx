@@ -43,7 +43,7 @@ const Embed = () => {
         changeLoader(false);
         getUserRole();
       } catch (error) {
-        const httpErrorStatus = error?.response?.status;
+        const httpErrorStatus = error.message;
         changeError(httpErrorStatus);
         changeLoader(false);
       }

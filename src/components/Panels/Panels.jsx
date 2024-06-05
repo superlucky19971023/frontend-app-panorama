@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
-import { useTranslation } from 'react-i18next';
 import CircularProgress from '@mui/material/CircularProgress';
 import { DashboardTypeContext } from '../DashboardContext';
 import Tabs from '../Tabs/Tabs';
 import Embed from '../Embed';
+import "./stylesPanels.css"
 
 const Panels = () => {
   const {
     dashboardType, loader, error, response,
   } = useContext(DashboardTypeContext);
-  const { t } = useTranslation(['global']);
 
   return (
     <div className="dashboard" id="dashboard">
@@ -34,12 +33,10 @@ const Panels = () => {
         </div>
       )}
       {error && (
-        <div className="panels-contact">
-          <div className="errorMessage">
-            <p>Error: {error} {t('errors.messageError')}</p>
-            <a className="button-contact" href="/">
-              {t('errors.btnBack')}
-            </a>
+        <div className="modal-container">
+          <div className="warning-modal">
+            <p className='modal-title'>ERROR</p>
+            {error} 
           </div>
         </div>
       )}
