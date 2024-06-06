@@ -99,7 +99,7 @@ const Embed = () => {
                 {
                   Name: 'lms',
                   Values: config.LMS_BASE_URL,
-                }])
+                }]);
               } else {
                 embedDashboard(options);
               }
