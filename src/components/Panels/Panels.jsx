@@ -3,7 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { DashboardTypeContext } from '../DashboardContext';
 import Tabs from '../Tabs/Tabs';
 import Embed from '../Embed';
-import "./stylesPanels.css"
+import './stylesPanels.css';
 
 const Panels = () => {
   const {
@@ -35,8 +35,8 @@ const Panels = () => {
       {error && (
         <div className="modal-container">
           <div className="warning-modal">
-            <p className='modal-title'>ERROR</p>
-            {error} 
+            <p className="modal-title">ERROR</p>
+            {error}
           </div>
         </div>
       )}

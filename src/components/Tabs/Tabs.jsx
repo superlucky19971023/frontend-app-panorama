@@ -49,7 +49,7 @@ const Tabs = () => {
 
   return (
     <div className="content-tabs">
-      <div className="sidebar">     
+      <div className="sidebar">
         {
           (userRole === 'AUTHOR' || userRole === 'AI_AUTHOR') && (
             <button
@@ -73,7 +73,7 @@ const Tabs = () => {
           Dashboards
         </button>
       </div>
-      <img alt="logo-panorama" src={logo} className='logo-panorama' />
+      <img alt="logo-panorama" src={logo} className="logo-panorama" />
       {(dashboardFunction === 'READER') && (
         <div className={`tab-container ${showTabs ? 'open' : 'close'}`}>
           {itemsMenu.map((item, index) => (

@@ -4,10 +4,9 @@ import EmbedHome from './EmbedHome';
 
 const Home = () => {
     const {
-        homeMode
+        homeMode,
     } = useContext(DashboardTypeContext);
 
-    console.log(homeMode)
     return (
         <div className="dashboard" id="dashboard">
             <EmbedHome />

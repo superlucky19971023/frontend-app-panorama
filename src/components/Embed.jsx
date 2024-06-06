@@ -12,7 +12,7 @@ const Embed = () => {
   const { config, authenticatedUser } = useContext(AppContext);
   const [response, setResponse] = useState(null);
   const [dashboardContainers, setDashboardContainers] = useState({});
-  const [userRole, setUserRole] = useState("");
+  const [userRole, setUserRole] = useState('');
 
   const getUserRole = async () => {
     const response = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
@@ -74,31 +74,31 @@ const Embed = () => {
             if (dashboardFunction === 'AUTHOR') {
               embedConsole(options);
             } else if (dashboardFunction === 'READER') {
-              if (userRole == 'STUDENT'){
+              if (userRole == 'STUDENT') {
                 const contentOptions = {
                   parameters: [
                     {
                       Name: 'userId',
                       Values: [
-                        authenticatedUser.userId
-                      ]
+                        authenticatedUser.userId,
+                      ],
                     },
                     {
                       Name: 'lms',
                       Values: [
-                        config.LMS_BASE_URL
-                      ]
-                    }
-                  ]
-                }  
+                        config.LMS_BASE_URL,
+                      ],
+                    },
+                  ],
+                };
                 const embededDashboard = await embedDashboard(options, contentOptions);
                 embededDashboard.setParameters([{
                   Name: 'userId',
-                  Values: authenticatedUser.userId
+                  Values: authenticatedUser.userId,
                 },
                 {
                   Name: 'lms',
-                  Values: config.LMS_BASE_URL
+                  Values: config.LMS_BASE_URL,
                 }])
               } else {
                 embedDashboard(options);
@@ -106,7 +106,6 @@ const Embed = () => {
             } else if (dashboardFunction === 'AI_AUTHOR') {
               embedQSearchBar(options);
             }
-
             changeLoader(false);
           }
         }

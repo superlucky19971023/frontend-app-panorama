@@ -4,12 +4,11 @@ import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { camelCaseObject } from '@edx/frontend-platform';
 import { DashboardTypeContext } from '../DashboardContext';
 
-
 const EmbedHome = () => {
   const {
-    changeHomeMode, changeError
+    changeHomeMode, changeError,
   } = useContext(DashboardTypeContext);
-  const { config, authenticatedUser } = useContext(AppContext);
+  const { config } = useContext(AppContext);
   const [modeHome, setModeHome] = useState();
 
   useEffect(() => {
@@ -18,10 +17,9 @@ const EmbedHome = () => {
         const url = `${config.LMS_BASE_URL}/panorama/api/get-panorama-mode`;
         const { data } = await getAuthenticatedHttpClient().get(url);
         const enrollmentData = camelCaseObject(data);
-        const modeHome = enrollmentData.body;
-        setModeHome(modeHome);
+        const home = enrollmentData.body;
+        setModeHome(home);
         changeHomeMode(modeHome);
-
       } catch (error) {
         const httpErrorStatus = error?.response?.status;
         changeError(httpErrorStatus);
