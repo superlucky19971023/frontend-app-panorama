@@ -36,15 +36,15 @@
 
 .buttonMenu {
   padding: 0;
-  margin-top: 9px;
-  margin-right: 30px;
+  /* margin-top: 9px; */
+  /* margin-right: 30px; */
   font-size: 1rem;
   cursor: pointer;
   border: none;
   background: transparent;
 }
 
-.disabled{
+.disabled {
   color: #878787;
 }
 
@@ -86,8 +86,8 @@
 }
 
 .tab a {
-  /* writing-mode: vertical-lr; */
-  /* rotate: 180deg; */
+  /* writing-mode: vertical-lr; 
+  rotate: 180deg;  */
   font-size: 0.9rem;
   overflow-wrap: break-word;
   white-space: nowrap;
@@ -113,11 +113,14 @@
 .sidebar {
   background: transparent;
   position: fixed;
-  transform: rotate(-90deg);
   border: none;
   color: grey;
-  margin-top: 63px;
-  margin-left: -90px;
+  margin-top: 1rem;
+  writing-mode: vertical-lr;
+  rotate: 180deg;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .logo-panorama {
