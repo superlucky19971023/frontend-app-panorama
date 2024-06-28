@@ -75,6 +75,7 @@ const Embed = () => {
               embedConsole(options);
             } else if (dashboardFunction === 'READER') {
               if (userRole == 'STUDENT'){
+                console.log("authenticated user", authenticatedUser)
                 const contentOptions = {
                   parameters: [
                     {
@@ -116,5 +117,6 @@ const Embed = () => {
   }, [response]);
   return null;
 };
+
 
 export default Embed;
