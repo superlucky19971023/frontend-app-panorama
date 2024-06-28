@@ -91,7 +91,7 @@ const Embed = () => {
                     {
                       Name: 'lms',
                       Values: [
-                        config.LMS_BASE_URL
+                        config.LMS_BASE_URL.split("//")[1]
                       ]
                     }
                   ]
@@ -103,7 +103,7 @@ const Embed = () => {
                 },
                 {
                   Name: 'lms',
-                  Values: config.LMS_BASE_URL
+                  Values: config.LMS_BASE_URL.split("//")[1]
                 }])
               } else {
                 console.log("entre al else de reader")
@@ -120,7 +120,7 @@ const Embed = () => {
       }
     };
     embedDashboards();
-  }, [config.LMS_BASE_URL, dashboardFunction, response]);
+  }, [config.LMS_BASE_URL, dashboardFunction]);
 
 
   console.log("dashboardFunction", dashboardFunction);
