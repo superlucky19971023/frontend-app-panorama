@@ -91,13 +91,13 @@ const Embed = () => {
                       ],
                     },
                     {
-                      Name: 'name',
+                      Name: 'userFullName',
                       Values: [
                         authenticatedUser.name,
                       ],
                     },
                     {
-                      Name: 'email',
+                      Name: 'userEmail',
                       Values: [
                         authenticatedUser.email,
                       ],
@@ -115,11 +115,11 @@ const Embed = () => {
                   Values: config.LMS_BASE_URL.split("//")[1],
                 },
                 {
-                  Name: 'name',
+                  Name: 'userFullName',
                   Values: authenticatedUser.name,
                 },
                 {
-                  Name: 'email',
+                  Name: 'userEmail',
                   Values: authenticatedUser.email,
                 }
               ]);
