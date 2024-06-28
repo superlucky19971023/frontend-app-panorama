@@ -55,6 +55,8 @@ const Embed = () => {
   console.log("dashboardFunction", dashboardFunction);
   console.log("user role", userRole);
   console.log("authenticated user", authenticatedUser);
+  console.log("response", response);
+  
 
 
 
@@ -62,16 +64,20 @@ const Embed = () => {
     const embedDashboards = async () => {
       changeLoader(true);
       if (response) {
+        console.log("entre al if de response");
         const embeddingContext = await createEmbeddingContext();
         const { embedDashboard, embedConsole, embedQSearchBar } = embeddingContext;
 
         for (let i = 0; i < response.length; i++) {
           const containerId = `${response[i].name}Container`;
           const container = document.getElementById(containerId);
+          console.log("container", container);
           if (container.firstChild) {
+            console.log("entre al if de container first child")
             container.removeChild(container.firstChild);
           }
           if (container) {
+            console.log("entre al if de container")
             const options = {
               url: response[i].url,
               container: container,
@@ -115,6 +121,7 @@ const Embed = () => {
                   Values: config.LMS_BASE_URL
                 }])
               } else {
+                console.log("entre al else de reader")
                 embedDashboard(options);
               }
             } else if (dashboardFunction === 'AI_AUTHOR') {
