@@ -144,114 +144,122 @@ import { AppContext } from '@edx/frontend-platform/react';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { camelCaseObject } from '@edx/frontend-platform';
 import { DashboardTypeContext } from './DashboardContext';
-
+ 
 const Embed = () => {
   const {
-    changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction, changeUserRole, userRole
+    changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction, userRole, changeUserRole,
   } = useContext(DashboardTypeContext);
   const { config, authenticatedUser } = useContext(AppContext);
   const [response, setResponse] = useState(null);
   const [dashboardContainers, setDashboardContainers] = useState({});
-
+ 
   useEffect(() => {
-    const fetchDataAndEmbedDashboards = async () => {
-      changeLoader(true);
-
+    const getUserRole = async () => {
+      const response = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
+      console.log(response.data.body)
+      changeUserRole(response.data.body)
+    };
+    getUserRole();
+  }, []);
+ 
+  useEffect(() => {
+    console.log("use Role", userRole)
+    changeLoader(true);
+    const fetchData = async () => {
       try {
-        // Fetch embed URL data
         const url = `${config.LMS_BASE_URL}/panorama/api/get-embed-url?dashboard_function=${dashboardFunction}`;
         const { data } = await getAuthenticatedHttpClient().get(url);
         const enrollmentData = camelCaseObject(data);
-        const urlResponse = enrollmentData.body;
+        const urlResponse = await enrollmentData.body;
         setResponse(urlResponse);
         handleDataReceived(urlResponse);
-
-        // Create containers for dashboards
+ 
         const containers = {};
         for (let i = 0; i < urlResponse.length; i++) {
           containers[urlResponse[i].name] = document.createElement('div');
-          containers[urlResponse[i].name].id = `${urlResponse[i].name}Container`;
+          containers[
+            urlResponse[i].name
+          ].id = `${urlResponse[i].name}Container`;
         }
+ 
         setDashboardContainers(containers);
         changeDashboardType(urlResponse[0].displayName);
-
-        // Fetch user role
-        const userRoleResponse = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
-        changeUserRole(userRoleResponse.data.body);
-
-        // Embed dashboards
+        changeLoader(false);
+      } catch (error) {
+        const httpErrorStatus = error.message;
+        changeError(httpErrorStatus);
+        changeLoader(false);
+      }
+    };
+    fetchData();
+  }, [config.LMS_BASE_URL, dashboardFunction, userRole]);
+ 
+  useEffect(() => {
+    console.log("entrando al efecto de response", userRole)
+    const embedDashboards = async () => {
+      changeLoader(true);
+      if (response) {
         const embeddingContext = await createEmbeddingContext();
         const { embedDashboard, embedConsole, embedQSearchBar } = embeddingContext;
-
-        for (let i = 0; i < urlResponse.length; i++) {
-          const containerId = `${urlResponse[i].name}Container`;
+ 
+        for (let i = 0; i < response.length; i++) {
+          const containerId = `${response[i].name}Container`;
           const container = document.getElementById(containerId);
-
-          if (container && container.firstChild) {
+          if (container.firstChild) {
             container.removeChild(container.firstChild);
           }
-
           if (container) {
+            console.log("entrando al if de container", userRole)
             const options = {
-              url: urlResponse[i].url,
+              url: response[i].url,
               container: container,
-              width: '100%'
+              width: '100%',
             };
-
+ 
             if (dashboardFunction === 'AUTHOR') {
+              console.log("entrando al if del DashboarFuntion", userRole)
               embedConsole(options);
             } else if (dashboardFunction === 'READER') {
-              console.log("entre al if de reader, ", userRole)
-              if (userRole === 'STUDENT') {
-                console.log("entre al if student, ", userRole)
+              if (userRole == 'STUDENT') {
                 const contentOptions = {
                   parameters: [
                     {
                       Name: 'userId',
-                      Values: [authenticatedUser.userId]
+                      Values: [
+                        authenticatedUser.userId,
+                      ],
                     },
                     {
                       Name: 'lms',
-                      Values: [config.LMS_BASE_URL.split("//")[1]]
-                    }
-                  ]
+                      Values: [
+                        config.LMS_BASE_URL.split("//")[1],
+                      ],
+                    },
+                  ],
                 };
                 const embededDashboard = await embedDashboard(options, contentOptions);
-                embededDashboard.setParameters([
-                  {
-                    Name: 'userId',
-                    Values: authenticatedUser.userId
-                  },
-                  {
-                    Name: 'lms',
-                    Values: config.LMS_BASE_URL.split("//")[1]
-                  }
-                ]);
+                embededDashboard.setParameters([{
+                  Name: 'userId',
+                  Values: authenticatedUser.userId,
+                },
+                {
+                  Name: 'lms',
+                  Values: config.LMS_BASE_URL.split("//")[1],
+                }]);
               } else {
                 embedDashboard(options);
               }
             } else if (dashboardFunction === 'AI_AUTHOR') {
               embedQSearchBar(options);
             }
+            changeLoader(false);
           }
         }
-        changeLoader(false);
-      } catch (error) {
-        changeError(error.message);
-        changeLoader(false);
       }
     };
-
-    console.log("dashboardFunction", dashboardFunction);
-    console.log("user role", userRole);
-    console.log("authenticated user", authenticatedUser);
-    console.log("response", response);
-    
-    fetchDataAndEmbedDashboards();
-  }, [config.LMS_BASE_URL, dashboardFunction]);
-
+    embedDashboards();
+  }, [response]);
   return null;
 };
-
+ 
 export default Embed;
-
