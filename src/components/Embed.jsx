@@ -7,16 +7,16 @@ import { DashboardTypeContext } from './DashboardContext';
 
 const Embed = () => {
   const {
-    changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction,
+    changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction, changeUserRole, userRole
   } = useContext(DashboardTypeContext);
   const { config, authenticatedUser } = useContext(AppContext);
   const [response, setResponse] = useState(null);
   const [dashboardContainers, setDashboardContainers] = useState({});
-  const [userRole, setUserRole] = useState("");
+  // const [userRole, setUserRole] = useState("");
 
   const getUserRole = async () => {
     const response = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
-    setUserRole(response.data.body);
+    changeUserRole(response.data.body);
   };
 
   useEffect(() => {
@@ -42,6 +42,7 @@ const Embed = () => {
         changeDashboardType(urlResponse[0].displayName);
         changeLoader(false);
         getUserRole();
+        console.log("user role", userRole )
       } catch (error) {
         const httpErrorStatus = error.message;
         changeError(httpErrorStatus);
