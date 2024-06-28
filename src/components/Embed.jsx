@@ -51,6 +51,13 @@ const Embed = () => {
     fetchData();
   }, [config.LMS_BASE_URL, dashboardFunction]);
 
+
+  console.log("dashboardFunction", dashboardFunction);
+  console.log("user role", userRole);
+  console.log("authenticated user", authenticatedUser);
+
+
+
   useEffect(() => {
     const embedDashboards = async () => {
       changeLoader(true);
@@ -76,10 +83,12 @@ const Embed = () => {
             };
 
             if (dashboardFunction === 'AUTHOR') {
+              console.log("entre al if de author")
               embedConsole(options);
             } else if (dashboardFunction === 'READER') {
+              console.log("entre al if de reader")
               if (userRole == 'STUDENT'){
-                console.log("authenticated user", authenticatedUser)
+                console.log("entre al if de student")
                 const contentOptions = {
                   parameters: [
                     {
@@ -109,6 +118,7 @@ const Embed = () => {
                 embedDashboard(options);
               }
             } else if (dashboardFunction === 'AI_AUTHOR') {
+              console.log("entre al if de author ia")
               embedQSearchBar(options);
             }
 
