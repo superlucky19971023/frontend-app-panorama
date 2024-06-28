@@ -248,7 +248,7 @@ const Embed = () => {
     console.log("response", response);
     
     fetchDataAndEmbedDashboards();
-  }, [config.LMS_BASE_URL, dashboardFunction, changeDashboardType, handleDataReceived, changeError, changeLoader, changeUserRole, userRole, authenticatedUser]);
+  }, [config.LMS_BASE_URL, dashboardFunction]);
 
   return null;
 };
