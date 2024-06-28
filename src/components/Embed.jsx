@@ -50,22 +50,10 @@ const Embed = () => {
       }
     };
     fetchData();
-  }, [config.LMS_BASE_URL, dashboardFunction]);
-
-
-  console.log("dashboardFunction", dashboardFunction);
-  console.log("user role", userRole);
-  console.log("authenticated user", authenticatedUser);
-  console.log("response", response);
-  
-
-
-
-  useEffect(() => {
     const embedDashboards = async () => {
       changeLoader(true);
       if (response) {
-        console.log("entre al if de response");
+        console.log("entre al if de response, userRole: ", userRole);
         const embeddingContext = await createEmbeddingContext();
         const { embedDashboard, embedConsole, embedQSearchBar } = embeddingContext;
 
@@ -78,7 +66,7 @@ const Embed = () => {
             container.removeChild(container.firstChild);
           }
           if (container) {
-            console.log("entre al if de container")
+            console.log("entre al if de container, userRole: ", userRole)
             const options = {
               url: response[i].url,
               container: container,
@@ -86,12 +74,12 @@ const Embed = () => {
             };
 
             if (dashboardFunction === 'AUTHOR') {
-              console.log("entre al if de author")
+              console.log("entre al if de author, userRole: ", userRole)
               embedConsole(options);
             } else if (dashboardFunction === 'READER') {
-              console.log("entre al if de reader")
+              console.log("entre al if de reader, user role: ", userRole)
               if (userRole == 'STUDENT'){
-                console.log("entre al if de student")
+                console.log("entre al if de student, user role: ", userRole)
                 const contentOptions = {
                   parameters: [
                     {
@@ -132,7 +120,15 @@ const Embed = () => {
       }
     };
     embedDashboards();
-  }, [response]);
+  }, [config.LMS_BASE_URL, dashboardFunction, response]);
+
+
+  console.log("dashboardFunction", dashboardFunction);
+  console.log("user role", userRole);
+  console.log("authenticated user", authenticatedUser);
+  console.log("response", response);
+  
+
   return null;
 };
 
