@@ -69,6 +69,10 @@ const Embed = () => {
               url: response[i].url,
               container: container,
               width: '100%',
+              parameters: {
+                userId: authenticatedUser.userId,
+                lms: config.LMS_BASE_URL.split("//")[1]
+              }
             };
 
             if (dashboardFunction === 'AUTHOR') {
