@@ -34,6 +34,7 @@
     "url": "https://github.com/openedx/frontend-app-panorama/issues"
   },
   "dependencies": {
+    "@edx/openedx-atlas": "^0.6.0",
     "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
     "@edx/frontend-build": "^13.0.14",
     "@edx/frontend-component-footer": "13.0.4",
