@@ -15,8 +15,8 @@ const Embed = () => {
 
   useEffect(() => {
     const getUserRole = async () => {
-      const response = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
-      changeUserRole(response.data.body)
+      const res = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
+      changeUserRole(res.data.body);
     };
     getUserRole();
   }, []);
@@ -75,7 +75,7 @@ const Embed = () => {
             if (dashboardFunction === 'AUTHOR') {
               embedConsole(options);
             } else if (dashboardFunction === 'READER') {
-              if (userRole == 'STUDENT') {
+              if (userRole === 'STUDENT') {
                 const contentOptions = {
                   parameters: [
                     {

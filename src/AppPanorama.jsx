@@ -4,7 +4,6 @@ import Panels from './components/Panels/Panels';
 import Home from './components/Home/Home';
 
 const AppPanorama = () => {
-
   return (
     <main>
       <div className="content-panorama">
