@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
-import { DashboardTypeContext } from '../DashboardContext';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { camelCaseObject } from '@edx/frontend-platform';
+import { DashboardTypeContext } from '../DashboardContext';
 
 const Home = () => {
   const { homeMode } = useContext(DashboardTypeContext);
@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <div className="dashboard" id="dashboard">
       <div className="framesContainerHome" id="framesContainerHome">
-        <iframe className="homes-iframe" src={iframeSrc} title="Home Mode"></iframe>
+        <iframe className="homes-iframe" src={iframeSrc} title="Home Mode" />
       </div>
     </div>
   );

@@ -19,12 +19,12 @@ export const DashboardTypeProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [response, setResponse] = useState('');
   const [dashboardFunction, setDashboardFunction] = useState('READER');
-  const [homeMode, setHomeMode] = useState('DEMO')
-  const [userRole, setUserRole] = useState("");
+  const [homeMode, setHomeMode] = useState('DEMO');
+  const [userRole, setUserRole] = useState('');
 
   const changeUserRole = (value) => {
     setUserRole(value);
-  }
+  };
 
   const changeDashboardFunction = (value) => {
     setDashboardFunction(value);
@@ -65,7 +65,7 @@ export const DashboardTypeProvider = ({ children }) => {
       dashboardFunction,
       homeMode,
       userRole,
-      changeUserRole
+      changeUserRole,
     }),
     [dashboardType, loader, error, response, userRole, dashboardFunction, homeMode],
   );

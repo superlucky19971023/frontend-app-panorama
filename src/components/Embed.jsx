@@ -4,7 +4,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { camelCaseObject } from '@edx/frontend-platform';
 import { DashboardTypeContext } from './DashboardContext';
- 
+
 const Embed = () => {
   const {
     changeDashboardType, handleDataReceived, changeError, changeLoader, dashboardFunction, userRole, changeUserRole,
@@ -12,7 +12,7 @@ const Embed = () => {
   const { config, authenticatedUser } = useContext(AppContext);
   const [response, setResponse] = useState(null);
   const [dashboardContainers, setDashboardContainers] = useState({});
- 
+
   useEffect(() => {
     const getUserRole = async () => {
       const response = await getAuthenticatedHttpClient().get(`${config.LMS_BASE_URL}/panorama/api/get-user-role`);
@@ -20,7 +20,7 @@ const Embed = () => {
     };
     getUserRole();
   }, []);
- 
+
   useEffect(() => {
     changeLoader(true);
     const fetchData = async () => {
@@ -31,7 +31,7 @@ const Embed = () => {
         const urlResponse = await enrollmentData.body;
         setResponse(urlResponse);
         handleDataReceived(urlResponse);
- 
+
         const containers = {};
         for (let i = 0; i < urlResponse.length; i++) {
           containers[urlResponse[i].name] = document.createElement('div');
@@ -39,7 +39,7 @@ const Embed = () => {
             urlResponse[i].name
           ].id = `${urlResponse[i].name}Container`;
         }
- 
+
         setDashboardContainers(containers);
         changeDashboardType(urlResponse[0].displayName);
         changeLoader(false);
@@ -51,14 +51,14 @@ const Embed = () => {
     };
     fetchData();
   }, [config.LMS_BASE_URL, dashboardFunction, userRole]);
- 
+
   useEffect(() => {
     const embedDashboards = async () => {
       changeLoader(true);
       if (response) {
         const embeddingContext = await createEmbeddingContext();
         const { embedDashboard, embedConsole, embedQSearchBar } = embeddingContext;
- 
+
         for (let i = 0; i < response.length; i++) {
           const containerId = `${response[i].name}Container`;
           const container = document.getElementById(containerId);
@@ -71,7 +71,7 @@ const Embed = () => {
               container: container,
               width: '100%',
             };
- 
+
             if (dashboardFunction === 'AUTHOR') {
               embedConsole(options);
             } else if (dashboardFunction === 'READER') {
@@ -87,7 +87,7 @@ const Embed = () => {
                     {
                       Name: 'lms',
                       Values: [
-                        config.LMS_BASE_URL.split("//")[1],
+                        config.LMS_BASE_URL.split('//')[1],
                       ],
                     },
                     {
@@ -106,23 +106,23 @@ const Embed = () => {
                 };
                 const embededDashboard = await embedDashboard(options, contentOptions);
                 embededDashboard.setParameters([
-                {
-                  Name: 'userId',
-                  Values: authenticatedUser.userId,
-                },
-                {
-                  Name: 'lms',
-                  Values: config.LMS_BASE_URL.split("//")[1],
-                },
-                {
-                  Name: 'userFullName',
-                  Values: authenticatedUser.name,
-                },
-                {
-                  Name: 'userEmail',
-                  Values: authenticatedUser.email,
-                }
-              ]);
+                  {
+                    Name: 'userId',
+                    Values: authenticatedUser.userId,
+                  },
+                  {
+                    Name: 'lms',
+                    Values: config.LMS_BASE_URL.split('//')[1],
+                  },
+                  {
+                    Name: 'userFullName',
+                    Values: authenticatedUser.name,
+                  },
+                  {
+                    Name: 'userEmail',
+                    Values: authenticatedUser.email,
+                  },
+                ]);
               } else {
                 embedDashboard(options);
               }
@@ -138,5 +138,5 @@ const Embed = () => {
   }, [response]);
   return null;
 };
- 
+
 export default Embed;
