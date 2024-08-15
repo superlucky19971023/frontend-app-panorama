@@ -5,15 +5,10 @@ import { camelCaseObject } from '@edx/frontend-platform';
 import { DashboardTypeContext } from '../DashboardContext';
 
 const Home = () => {
-  const { homeMode } = useContext(DashboardTypeContext);
-
-  const {
-    changeHomeMode, changeError,
-  } = useContext(DashboardTypeContext);
+  const { homeMode, changeHomeMode, changeError } = useContext(DashboardTypeContext);
   const { config } = useContext(AppContext);
-  const [modeHome, setModeHome] = useState();
   const [iframeSrc, setIframeSrc] = useState();
-
+console.log("1",homeMode)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,15 +16,17 @@ const Home = () => {
         const { data } = await getAuthenticatedHttpClient().get(url);
         const enrollmentData = camelCaseObject(data);
         const home = enrollmentData.body;
-        setModeHome(home);
-        changeHomeMode(modeHome);
+        changeHomeMode(home);
       } catch (error) {
         const httpErrorStatus = error?.response?.status;
         changeError(httpErrorStatus);
       }
     };
     fetchData();
+  }, [config.LMS_BASE_URL, homeMode, changeHomeMode, changeError]);
+  console.log("2",homeMode)
 
+  useEffect(() => {
     if (homeMode === 'FREE') {
       setIframeSrc('https://panorama-home-pages.s3.amazonaws.com/panorama-free-home.html');
     } else if (homeMode === 'SAAS') {
@@ -39,7 +36,7 @@ const Home = () => {
     } else {
       setIframeSrc('https://panorama-home-pages.s3.amazonaws.com/panorama-demo-home.html');
     }
-  }, [config.LMS_BASE_URL]);
+  }, [homeMode]);
 
   return (
     <div className="dashboard" id="dashboard">
