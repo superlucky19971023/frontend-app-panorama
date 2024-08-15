@@ -8,7 +8,7 @@ const Home = () => {
   const { homeMode, changeHomeMode, changeError } = useContext(DashboardTypeContext);
   const { config } = useContext(AppContext);
   const [iframeSrc, setIframeSrc] = useState();
-console.log("1",homeMode)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +24,6 @@ console.log("1",homeMode)
     };
     fetchData();
   }, [config.LMS_BASE_URL, homeMode, changeHomeMode, changeError]);
-  console.log("2",homeMode)
 
   useEffect(() => {
     if (homeMode === 'FREE') {
