@@ -22,6 +22,7 @@ const Tabs = () => {
     getUserRole();
   }, []);
 
+  
   useEffect(() => {
     if (dashboardResponse && dashboardResponse.length > 0 && itemsMenu.length === 0) {
       const updatedItemsMenu = [];
