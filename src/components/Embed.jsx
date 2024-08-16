@@ -11,7 +11,6 @@ const Embed = () => {
   } = useContext(DashboardTypeContext);
   const { config, authenticatedUser } = useContext(AppContext);
   const [response, setResponse] = useState(null);
-  const [dashboardContainers, setDashboardContainers] = useState({});
 
   useEffect(() => {
     const getUserRole = async () => {
@@ -39,8 +38,6 @@ const Embed = () => {
             urlResponse[i].name
           ].id = `${urlResponse[i].name}Container`;
         }
-
-        setDashboardContainers(containers);
         changeDashboardType(urlResponse[0].displayName);
         changeLoader(false);
       } catch (error) {
@@ -68,7 +65,7 @@ const Embed = () => {
           if (container) {
             const options = {
               url: response[i].url,
-              container: container,
+              container,
               width: '100%',
             };
 

@@ -20,7 +20,7 @@ const Tabs = () => {
 
   useEffect(() => {
     getUserRole();
-  }, []);
+  }, [getUserRole]);
 
   useEffect(() => {
     if (dashboardResponse && dashboardResponse.length > 0 && itemsMenu.length === 0) {
@@ -77,7 +77,7 @@ const Tabs = () => {
       {(dashboardFunction === 'READER') && (
         <div className={`tab-container ${showTabs ? 'open' : 'close'}`}>
           {itemsMenu.map((item, index) => (
-            <div id={`tab${index}`} className="tab" key={`item_${index}`}>
+            <div id={`tab${index}`} className="tab" key={`${item}_${index}`}>
               <a
                 className={`${item === dashboardType ? 'selected' : ''}`}
                 aria-current="page"
