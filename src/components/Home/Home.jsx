@@ -7,7 +7,7 @@ import { DashboardTypeContext } from '../DashboardContext';
 const Home = () => {
   const { homeMode, changeHomeMode, changeError } = useContext(DashboardTypeContext);
   const { config } = useContext(AppContext);
-  const [iframeSrc, setIframeSrc] = useState();
+  const [iframeSrc, setIframeSrc] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +23,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, [config.LMS_BASE_URL, homeMode, changeHomeMode, changeError]);
+  }, [config.LMS_BASE_URL, changeHomeMode, changeError]);
 
   useEffect(() => {
     if (homeMode === 'FREE') {
@@ -32,7 +32,7 @@ const Home = () => {
       setIframeSrc('https://panorama-home-pages.s3.amazonaws.com/panorama-saas-home.html');
     } else if (homeMode === 'CUSTOM') {
       setIframeSrc('https://panorama-home-pages.s3.amazonaws.com/panorama-custom-home.html');
-    } else {
+    } else if (homeMode) {
       setIframeSrc('https://panorama-home-pages.s3.amazonaws.com/panorama-demo-home.html');
     }
   }, [homeMode]);
@@ -40,7 +40,9 @@ const Home = () => {
   return (
     <div className="dashboard" id="dashboard">
       <div className="framesContainerHome" id="framesContainerHome">
-        <iframe className="homes-iframe" src={iframeSrc} title="Home Mode" />
+        {iframeSrc && (
+          <iframe className="homes-iframe" src={iframeSrc} title="Home Mode" />
+        )}
       </div>
     </div>
   );
